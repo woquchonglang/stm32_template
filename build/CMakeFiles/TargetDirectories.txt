@@ -1,0 +1,16 @@
+/home/yjy/Documents/code/stm/test/build/CMakeFiles/test.dir
+/home/yjy/Documents/code/stm/test/build/CMakeFiles/edit_cache.dir
+/home/yjy/Documents/code/stm/test/build/CMakeFiles/rebuild_cache.dir
+/home/yjy/Documents/code/stm/test/build/cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir
+/home/yjy/Documents/code/stm/test/build/cmake/stm32cubemx/CMakeFiles/edit_cache.dir
+/home/yjy/Documents/code/stm/test/build/cmake/stm32cubemx/CMakeFiles/rebuild_cache.dir
+/home/yjy/Documents/code/stm/test/build/Config/CMakeFiles/edit_cache.dir
+/home/yjy/Documents/code/stm/test/build/Config/CMakeFiles/rebuild_cache.dir
+/home/yjy/Documents/code/stm/test/.deps/freertos-build/CMakeFiles/freertos_kernel.dir
+/home/yjy/Documents/code/stm/test/.deps/freertos-build/CMakeFiles/edit_cache.dir
+/home/yjy/Documents/code/stm/test/.deps/freertos-build/CMakeFiles/rebuild_cache.dir
+/home/yjy/Documents/code/stm/test/.deps/freertos-build/include/CMakeFiles/edit_cache.dir
+/home/yjy/Documents/code/stm/test/.deps/freertos-build/include/CMakeFiles/rebuild_cache.dir
+/home/yjy/Documents/code/stm/test/.deps/freertos-build/portable/CMakeFiles/freertos_kernel_port.dir
+/home/yjy/Documents/code/stm/test/.deps/freertos-build/portable/CMakeFiles/edit_cache.dir
+/home/yjy/Documents/code/stm/test/.deps/freertos-build/portable/CMakeFiles/rebuild_cache.dir
