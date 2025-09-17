@@ -21,13 +21,10 @@ endif()
 set(CMAKE_PROJECT_NAME test)
 
 # Include toolchain file
-include(FetchContent)
-include("cmake/gcc-arm-none-eabi.cmake")
-
 set(FETCHCONTENT_QUIET OFF)
-# set(FETCHCONTENT_UPDATES_DISCONNECTED ON) set(FETCHCONTENT_FULLY_DISCONNECTED
-# OFF)
 set(FETCHCONTENT_BASE_DIR ${CMAKE_SOURCE_DIR}/.deps)
+
+include("cmake/gcc-arm-none-eabi.cmake")
 
 # Enable compile command to ease indexing with e.g. clangd
 set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
@@ -36,15 +33,20 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
 project(${CMAKE_PROJECT_NAME})
 message("Build type: " ${CMAKE_BUILD_TYPE})
 
+# include("cmake/etl.cmake")
+# include("cmake/catch2.cmake")
+include("cmake/freertos.cmake")
+
+# include("cmake/gtest.cmake")
+
 # Enable CMake support for ASM and C languages
-enable_language(C ASM)
+enable_language(C CXX ASM)
 
 # Create an executable object type
 add_executable(${CMAKE_PROJECT_NAME})
 
 # Add STM32CubeMX generated sources
 add_subdirectory(cmake/stm32cubemx)
-add_subdirectory(Config)
 
 # Link directories setup
 target_link_directories(
@@ -69,12 +71,3 @@ target_compile_definitions(
 target_link_libraries(
   ${CMAKE_PROJECT_NAME} stm32cubemx # Add user defined libraries
 )
-
-FetchContent_Declare(
-  FreeRTOS
-  GIT_REPOSITORY https://github.com/FreeRTOS/FreeRTOS-Kernel.git
-  GIT_TAG V11.2.0
-  GIT_PROGRESS TRUE
-  SOURCE_DIR ${CMAKE_SOURCE_DIR}/Lib/FreeRTOS)
-
-FetchContent_MakeAvailable(FreeRTOS)

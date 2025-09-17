@@ -1,3 +1,0 @@
-/home/yjy/Documents/code/stm/test/build/_deps/freertos-subbuild/CMakeFiles/freertos-populate.dir
-/home/yjy/Documents/code/stm/test/build/_deps/freertos-subbuild/CMakeFiles/edit_cache.dir
-/home/yjy/Documents/code/stm/test/build/_deps/freertos-subbuild/CMakeFiles/rebuild_cache.dir
