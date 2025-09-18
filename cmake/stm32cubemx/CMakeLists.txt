@@ -62,7 +62,7 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE ${MX_Application_Src})
 target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE ${MX_LINK_DIRS})
 
 # Add libraries to the project
-target_link_libraries(${CMAKE_PROJECT_NAME} ${MX_LINK_LIBS} freertos_kernel)
+target_link_libraries(${CMAKE_PROJECT_NAME} ${MX_LINK_LIBS})
 
 # Add the map file to the list of files to be removed with 'clean' target
 set_target_properties(
