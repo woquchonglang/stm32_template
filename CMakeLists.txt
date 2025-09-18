@@ -33,11 +33,26 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
 project(${CMAKE_PROJECT_NAME})
 message("Build type: " ${CMAKE_BUILD_TYPE})
 
-# include("cmake/etl.cmake")
-# include("cmake/catch2.cmake")
+# include("cmake/etl.cmake") include("cmake/catch2.cmake")
 include("cmake/freertos.cmake")
+include("cmake/cmsis_device.cmake")
+include("cmake/hal.cmake")
+include("cmake/cmsis5.cmake")
 
 # include("cmake/gtest.cmake")
+
+execute_process(
+  COMMAND ${CMAKE_SOURCE_DIR}/script/hal.sh
+  RESULT_VARIABLE hal_result
+  OUTPUT_VARIABLE hal_output
+  ERROR_VARIABLE hal_error
+  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/script)
+
+if(NOT hal_result EQUAL 0)
+  message(WARNING "hal.sh执行失败: ${hal_error}")
+else()
+  message(STATUS "hal.sh执行成功: ${hal_output}")
+endif()
 
 # Enable CMake support for ASM and C languages
 enable_language(C CXX ASM)
