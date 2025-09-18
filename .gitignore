@@ -1,2 +1,6 @@
 build/
 .deps/
+Lib/
+Drivers/
+CMakePresets.json
+
