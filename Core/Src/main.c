@@ -21,10 +21,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "FreeRTOS.h"
-#include "semphr.h"
 
-SemaphoreHandle_t xSemaphore = NULL;
+#include "main.hpp"
 
 /* USER CODE END Includes */
 
@@ -78,7 +76,6 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-  xSemaphore = xSemaphoreCreateBinary();
 
   /* USER CODE END Init */
 
@@ -92,6 +89,8 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
+
+  mainCpp();
 
   /* USER CODE END 2 */
 
