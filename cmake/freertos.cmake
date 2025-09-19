@@ -13,10 +13,9 @@ add_library(freertos_config INTERFACE)
 target_include_directories(freertos_config
                            INTERFACE "${CMAKE_SOURCE_DIR}/Config/include")
 
-file(GLOB_RECURSE SOURCES CMAKE_CONFIGURE_DEPENDS 
-   "${CMAKE_SOURCE_DIR}/Lib/systemview/Sample/FreeRTOSV11/*.c")
-
- target_sources(freertos_config INTERFACE ${SOURCES})
+ target_sources(freertos_config INTERFACE
+   "${CMAKE_SOURCE_DIR}/Lib/systemview/Sample/FreeRTOSV11/SEGGER_SYSVIEW_FreeRTOS.c"
+   "${CMAKE_SOURCE_DIR}/Lib/systemview/Sample/FreeRTOSV11/Config/Cortex-M/SEGGER_SYSVIEW_Config_FreeRTOS.c")
 
 target_include_directories(freertos_config INTERFACE
   "${CMAKE_SOURCE_DIR}/Lib/systemview/Sample/FreeRTOSV11")
