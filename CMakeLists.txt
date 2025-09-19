@@ -23,6 +23,7 @@ set(CMAKE_PROJECT_NAME test)
 # Include toolchain file
 set(FETCHCONTENT_QUIET OFF)
 set(FETCHCONTENT_BASE_DIR ${CMAKE_SOURCE_DIR}/.deps)
+set(FETCHCONTENT_UPDATES_DISCONNECTED ON)
 
 include("cmake/gcc-arm-none-eabi.cmake")
 
@@ -35,6 +36,7 @@ message("Build type: " ${CMAKE_BUILD_TYPE})
 
 # include("cmake/etl.cmake") include("cmake/catch2.cmake")
 include("cmake/freertos.cmake")
+include("cmake/systemview.cmake")
 include("cmake/cmsis_device.cmake")
 include("cmake/hal.cmake")
 include("cmake/cmsis5.cmake")
@@ -57,11 +59,14 @@ endif()
 # Enable CMake support for ASM and C languages
 enable_language(C CXX ASM)
 
+add_compile_options(-Wno-unused-parameter)
+
 # Create an executable object type
 add_executable(${CMAKE_PROJECT_NAME})
 
 # Add STM32CubeMX generated sources
 add_subdirectory(cmake/stm32cubemx)
+add_subdirectory(Src)
 
 # Link directories setup
 target_link_directories(
@@ -69,21 +74,17 @@ target_link_directories(
 )
 
 # Add sources to executable
-target_sources(${CMAKE_PROJECT_NAME} PRIVATE main.cpp# Add user sources here
+target_sources(${CMAKE_PROJECT_NAME} PRIVATE main.cpp # Add user sources here
 )
 
-# Add include paths
 target_include_directories(
-  ${CMAKE_PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} # Add user defined
-                                                            # include paths
+  ${CMAKE_PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-# Add project symbols (macros)
 target_compile_definitions(
-  ${CMAKE_PROJECT_NAME} PRIVATE # Add user defined symbols
+  ${CMAKE_PROJECT_NAME} PRIVATE
 )
 
-# Add linked libraries
 target_link_libraries(
-  ${CMAKE_PROJECT_NAME} stm32cubemx freertos_kernel# Add user defined libraries
+  ${CMAKE_PROJECT_NAME} freertos_kernel App
 )

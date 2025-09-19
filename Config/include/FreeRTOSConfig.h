@@ -1,4 +1,3 @@
-
 #ifndef FREERTOS_CONFIG_H
 #define FREERTOS_CONFIG_H
 
@@ -24,9 +23,6 @@
 #include <stdint.h>
 extern uint32_t SystemCoreClock;
 #endif
-#ifndef CMSIS_device_header
-#define CMSIS_device_header "stm32f4xx.h"
-#endif /* CMSIS_device_header */
 
 #define configENABLE_FPU 1
 #define configENABLE_MPU 0
@@ -40,7 +36,7 @@ extern uint32_t SystemCoreClock;
 #define configTICK_RATE_HZ ((TickType_t)1000)
 #define configMAX_PRIORITIES (56)
 #define configMINIMAL_STACK_SIZE ((uint16_t)128)
-#define configTOTAL_HEAP_SIZE ((size_t)30720)
+#define configTOTAL_HEAP_SIZE ((size_t)(17 * 1024))
 #define configMAX_TASK_NAME_LEN (16)
 #define configUSE_TRACE_FACILITY 1
 #define configUSE_16_BIT_TICKS 0
@@ -127,6 +123,18 @@ See http://www.FreeRTOS.org/RTOS-Cortex-M3-M4.html. */
 header file. */
 /* USER CODE BEGIN 1 */
 
+// #define configUSE_MALLOC_FAILED_HOOK 1
+// #define configCHECK_FOR_STACK_OVERFLOW 1
+//
+// /* newlib thread safe support */
+// #define configUSE_NEWLIB_REENTRANT 1
+//
+// /* vscode rtos-view support */
+// #define configGENERATE_RUN_TIME_STATS 1
+// #define configRECORD_STACK_HIGH_ADDRESS 1
+// #define portCONFIGURE_TIMER_FOR_RUN_TIME_STATS() (dwtInit())
+// #define portGET_RUN_TIME_COUNTER_VALUE() (dwtRead())
+
 #define configASSERT(x)                                                        \
   if ((x) == 0) {                                                              \
     taskDISABLE_INTERRUPTS();                                                  \
@@ -146,6 +154,10 @@ standard names. */
 #define USE_CUSTOM_SYSTICK_HANDLER_IMPLEMENTATION 0
 
 /* USER CODE BEGIN Defines */
+#define INCLUDE_xTaskGetIdleTaskHandle 1
+#define INCLUDE_pxTaskGetStackStart 1
+#include "SEGGER_SYSVIEW_FreeRTOS.h"
+
 /* Section where parameter definitions can be added (for instance, to override
  * default ones in FreeRTOS.h) */
 /* USER CODE END Defines */
